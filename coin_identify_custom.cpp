@@ -220,7 +220,7 @@ void part3(int argc, char **argv)
     ifstream fin(infile);
     string temp;
     fin >> temp >> mx >> my >> temp;
-    int grid[my][mx][3];
+    vector<vector<vector<int>>> grid(my, vector<vector<int>>(mx, vector<int>(3)));
     for (int i = 0; i < my; i++)
     {
         for (int j = 0; j < mx; j++)
@@ -228,7 +228,7 @@ void part3(int argc, char **argv)
             fin >> grid[i][j][0] >> grid[i][j][1] >> grid[i][j][2];
         }
     }
-    int grayscale[my][mx];
+    vector<vector<int>> grayscale(my, vector<int>(mx));
     for (int i = 0; i < my; i++)
     {
         for (int j = 0; j < mx; j++)
@@ -236,7 +236,8 @@ void part3(int argc, char **argv)
             grayscale[i][j] = (int)((double)(grid[i][j][0] + grid[i][j][1] + grid[i][j][2]) / 3 + .5);
         }
     }
-    int sobelx[my][mx], sobely[my][mx];
+    vector<vector<int>> sobelx(my, vector<int>(mx));
+    vector<vector<int>> sobely(my, vector<int>(mx));
     for (int i = 1; i < my - 1; i++)
     {
         for (int j = 1; j < mx - 1; j++)
@@ -283,7 +284,8 @@ void part3(int argc, char **argv)
         }
     }
     double PI = 3.141592653589793238462643383279502884197;
-    double magnitude[my][mx], angle[my][mx];
+    vector<vector<double>> magnitude(my, vector<double>(mx));
+    vector<vector<double>> angle(my, vector<double>(mx));
     for (int i = 0; i < my; i++)
     {
         for (int j = 0; j < mx; j++)
@@ -309,7 +311,7 @@ void part3(int argc, char **argv)
     dir[-45] = {-1, 1};
     dir[-90] = {-1, 0};
     dir[-135] = {-1, -1};
-    bool ans2[my][mx];
+    vector<vector<bool>> ans2(my, vector<bool>(mx));
     vector<vector<bool>> ans_final(my);
     for (int i = 0; i < my; i++)
     {
