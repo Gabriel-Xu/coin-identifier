@@ -173,7 +173,7 @@ void dfs(vector<vector<int>> &ans, vector<vector<bool>> &visited, int i, int j, 
     }
 }
 
-void part3(int argc, char **argv)
+int main(int argc, char **argv)
 {
     int mx, my;
     string infile = "image.ppm";
@@ -218,6 +218,11 @@ void part3(int argc, char **argv)
     lt *= lt;
     ht *= ht;
     ifstream fin(infile);
+    if (!fin.is_open())
+    {
+        cerr << "Error: could not open file " << infile << "\n";
+        return 1;
+    }
     string temp;
     fin >> temp >> mx >> my >> temp;
     vector<vector<vector<int>>> grid(my, vector<vector<int>>(mx, vector<int>(3)));
@@ -467,9 +472,9 @@ void part3(int argc, char **argv)
         }
     }
     unordered_set<int> del_circles;
-    for (int i = 0; i < circles.size(); i++)
+    for (int i = 0; i < (int)circles.size(); i++)
     {
-        for (int j = i + 1; j < circles.size(); j++)
+        for (int j = i + 1; j < (int)circles.size(); j++)
         {
             if (!del_circles.count(i) && !del_circles.count(j))
             {
@@ -507,7 +512,7 @@ void part3(int argc, char **argv)
     coin_counts["quarter"] = 0;
     coin_counts["half dollar coin"] = 0;
     coin_counts["dollar coin"] = 0;
-    for (int idx = 0; idx < circles.size(); idx++)
+    for (int idx = 0; idx < (int)circles.size(); idx++)
     {
         if (del_circles.count(idx))
             continue;
@@ -652,9 +657,4 @@ void part3(int argc, char **argv)
         fout << "\n";
     }
     fout.close();
-}
-
-int main(int argc, char **argv)
-{
-    part3(argc, argv);
 }
