@@ -1,4 +1,6 @@
 .vscode/
-*.out
 *.ppm
 /results.txt
+custom
+opencv
+out/
