@@ -1,0 +1,10 @@
+# Ground-truth coin counts per image, established by visual inspection on
+# 2026-10-17. One line per image: <name> type=count ... (types: penny nickel
+# dime quarter half_dollar dollar_coin; omitted types are 0).
+#
+# coins_3 contains overlapping coins and several very dark pennies; its
+# dime/nickel split is uncertain by about two coins. Re-check if a detector
+# disagrees by only one or two there.
+coins_1 penny=41 nickel=7 quarter=20
+coins_2 penny=69 nickel=12 dime=2 quarter=32
+coins_3 penny=77 nickel=18 dime=49 dollar_coin=4

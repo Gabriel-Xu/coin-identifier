@@ -1,6 +1,7 @@
 .vscode/
 *.ppm
-/results.txt
 custom
 opencv
+custom-debug
 out/
+__pycache__/
