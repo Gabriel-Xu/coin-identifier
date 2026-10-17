@@ -1,7 +1,9 @@
-#include <stdio.h>
 #include <iostream>
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
+#include <fstream>
+#include <map>
+#include <opencv2/core.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/imgcodecs.hpp>
 
 using namespace std;
 
@@ -22,14 +24,14 @@ int main(int argc, char **argv)
             lt = stoi(s2);
         if (s == "-ht")
             ht = stoi(s2);
-        if (s == "-ht")
-            ht = stoi(s2);
         if (s == "-ct")
             ct = stoi(s2);
         if (s == "-bt")
             bt = stoi(s2);
         if (s == "-pt")
             penny = stoi(s2);
+        if (s == "-nt")
+            nickel = stoi(s2);
         if (s == "-dt")
             dt = stoi(s2);
         if (s == "-dt2")
@@ -85,7 +87,7 @@ int main(int argc, char **argv)
             color = 0;
             col = Scalar(255, 0, 0);
         }
-        else if (radius < 90 || radius < penny && r > g && r > b)
+        else if (radius < 90 || (radius < penny && r > g && r > b))
         {
             color = 1;
             col = Scalar(0, 0, 255);

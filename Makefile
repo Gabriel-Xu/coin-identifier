@@ -1,7 +1,7 @@
 CXX      ?= g++
 CXXFLAGS ?= -O3 -std=c++17 -Wall -Wextra
-OPENCV   := $(shell pkg-config --cflags --libs opencv4 2>/dev/null)
-IMG      ?= coins_1
+OPENCV   := $(shell pkg-config --cflags --libs opencv4)
+IMG      ?= coins_3
 
 .PHONY: all run run-custom run-opencv compare clean
 
@@ -23,7 +23,7 @@ run-opencv: opencv
 	mkdir -p out/opencv
 	cd out/opencv && $(CURDIR)/opencv -f $(CURDIR)/images/$(IMG).jpg
 
-compare: run
+compare:
 	@diff -y out/custom/results.txt out/opencv/results.txt || true
 
 clean:
