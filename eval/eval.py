@@ -58,7 +58,7 @@ def main():
              os.path.isdir(os.path.join(ROOT, "out", d))] if os.path.isdir(os.path.join(ROOT, "out")) else []
     if not impls:
         sys.exit("no out/<impl>/ directories; run `make eval` first")
-    header = f"{'impl':8} {'image':10} " + " ".join(f"{t[:6]:>6}" for t in TYPES) + "   coins   value"
+    header = f"{'impl':8} {'image':10} " + " ".join(f"{t[:6]:>6}" for t in TYPES) + "   coins   value   accuracy"
     print(header)
     print("-" * len(header))
     worst = 0
@@ -75,7 +75,7 @@ def main():
             dc = sum(got.values()) - sum(gt.values())
             dv = cents(got) - cents(gt)
             print(f"{impl:8} {name:10} " + " ".join(f"{errs[t]:+6d}" for t in TYPES) +
-                  f"   {dc:+5d}   {dv / 100:+6.2f}")
+                  f"   {dc:+5d}   {dv / 100:+6.2f}  {1 - abs(dc) / sum(gt.values()):.2%}")
             for t in TYPES:
                 tot_err[t] += abs(errs[t])
             tot_coins += abs(dc)
